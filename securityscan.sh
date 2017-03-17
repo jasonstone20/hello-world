@@ -42,11 +42,12 @@ echo $straight
 #done
 
 while true; do
-    echo "Please select one"
-    echo $straight
-    echo		    
-    read -p "(A)nti-Virus (R)ootkit (S)ystem (C)omplete Scan (E)xit (a/r/s/c/e)" yn
-    echo $straight
+   echo "Please select one"
+   echo $straight
+   echo		    
+   echo "(A)nti-Virus (R)ootkit (S)ystem (C)omplete Scan (E)xit"
+  read -p " (a/r/s/c/e):>" yn
+   echo $straight
     case $yn in
         [Aa]* )  echo "Anti-Virus by ClamAV" ; sudo freshclam 2>>scerrlog.txt 2>/dev/null ; sudo clamscan  ;;  
         [Rr]* )  echo "RootKit by chkrootkit" ; sudo chkrootkit 2>>scerrlog.txt 2>/dev/null ;;

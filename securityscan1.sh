@@ -21,7 +21,7 @@ echo
 
 # Add date and time to error log (scerrlog.txt)
 
-date >>scerrlog.txt
+date >> scerrlog1.txt
 #Menu
 
 echo
@@ -34,14 +34,35 @@ echo "Please choose an option!"
 echo $straight
 select arvle in "Anti-Virus" "RootKit" "System" "All" "Exit"; do
     case $arvle in
-        	Anti-Virus ) echo "Anti-Virus by ClamAV" ; sudo freshclam 2>>scerrlog.txt 2>/dev/null ; sudo clamscan  ;;
-        	RootKit ) echo "RootKit by chkrootkit" ; sudo chkrootkit 2>>scerrlog.txt 2>/dev/null;;
-		System ) git clone https://github.com/CISOfy/lynis 2>>scerrlog.txt 2>/dev/null ; sudo lynis audit systems 2>>scerrlog.txt 2>/dev/null ;;
+        	Anti-Virus ) echo "Anti-Virus by ClamAV" ; sudo freshclam 2>scerrlog1.txt 2>/dev/null ; sudo clamscan  ;;
+        	RootKit ) echo "RootKit by chkrootkit" ; sudo chkrootkit 2>scerrlog1.txt 2>/dev/null;;
+		System ) git clone https://github.com/CISOfy/lynis 2>scerrlog1.txt 2>/dev/null ; sudo lynis audit system 2>scerrlog1.txt 2>/dev/null ;;
 		All ) break ;;	
 		Exit ) exit ;;    
 	esac
 done
 
+
+# menu loop option 2
+
+
+#while true; do
+#
+#   echo "Please select one"
+#   echo $straight
+#   echo		    
+#   echo "(A)nti-Virus (R)ootkit (S)ystem (C)omplete Scan (E)xit"
+#  read -p " (a/r/s/c/e)" yn
+#   echo $straight
+#    case $yn in
+#        [Aa]* )  echo "Anti-Virus by ClamAV" ; sudo freshclam 2>>scerrlog.txt 2>/dev/null ; sudo clamscan  ;;  
+#        [Rr]* )  echo "RootKit by chkrootkit" ; sudo chkrootkit 2>>scerrlog.txt 2>/dev/null ;;
+#        [Ss]* ) git clone https://github.com/CISOfy/lynis 2>>scerrlog.txt 2>/dev/null ; sudo lynis audit system 2>>scerrlog.txt 2>/dev/null ;;
+#	[Cc]* ) break ;;
+#	[Ee]* ) exit ;;
+#	* ) echo "Please enter (a/r/s/c/e)" ;
+#    esac
+#done
 
 
 
@@ -56,14 +77,14 @@ echo $break
 
 # Add date and time to error log (scerrlog.txt)
 
-date >>scerrlog.txt
+date >> scerrlog1.txt
 
 # Update ClamAV
 
 echo
 echo $break
 echo
-sudo freshclam 2>>scerrlog.txt 2>/dev/null
+sudo freshclam 2>scerrlog1.txt 2>/dev/null
 echo 
 echo $break
 echo
@@ -90,7 +111,7 @@ echo
 echo $break
 echo
 echo "Checking for RootKits"
-sudo chkrootkit 2>>scerrlog.txt 2>/dev/null
+sudo chkrootkit 2>scerrlog1.txt 2>/dev/null
 echo 
 echo $break
 
@@ -111,7 +132,7 @@ echo
 echo $break
 echo
 echo "Downloading lastest version...."
-git clone https://github.com/CISOfy/lynis 2>>scerrlog.txt 2>/dev/null
+git clone https://github.com/CISOfy/lynis 2>scerrlog1.txt 2>/dev/null
 echo 
 echo $break
 
@@ -120,13 +141,13 @@ echo $break
 echo 
 echo $break
 echo
-sudo lynis audit systems 2>>scerrlog.txt 2>/dev/null
+sudo lynis audit system 2>scerrlog1.txt 2>/dev/null
 echo 
 echo $break
 
 # Display error log
 
-read -p "Diplaying error log from <scerrlog.txt>. Press <enter> to coninue, then <q> to exit #viewer"
+read -p "Diplaying error log from <scerrlog1.txt>. Press <enter> to coninue, then <q> to exit #viewer"
 #cat scerrlog.txt | less
 
 #reset Bash
